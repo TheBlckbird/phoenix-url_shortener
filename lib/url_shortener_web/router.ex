@@ -18,6 +18,7 @@ defmodule UrlShortenerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    resources "/shortened_urls", ShortenedUrlController
   end
 
   # Other scopes may use custom stacks.
