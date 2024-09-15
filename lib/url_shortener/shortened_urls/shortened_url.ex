@@ -2,6 +2,7 @@ defmodule UrlShortener.ShortenedUrls.ShortenedUrl do
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query
+  # import String
 
   schema "shortened_urls" do
     field :key, :string
@@ -15,6 +16,20 @@ defmodule UrlShortener.ShortenedUrls.ShortenedUrl do
     shortened_url
     |> cast(attrs, [:url])
     |> validate_required([:url])
+    |> validate_format(:url, ~r/http(s)?:\/\/.*/)
+    # |> put_change(:url, fn changeset ->
+    #   original_url = get_field(changeset, :url)
+
+    #   modified_url = original_url |> to_string()
+
+    #   if(
+    #     not (original_url |> starts_with?("http://") or original_url |> starts_with?("https://"))
+    #   ) do
+    #     "http://" <> modified_url
+    #   end
+
+    #   modified_url
+    # end)
     |> put_change(:key, generate_unique_key())
   end
 

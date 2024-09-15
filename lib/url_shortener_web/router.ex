@@ -18,7 +18,11 @@ defmodule UrlShortenerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    resources "/shortened_urls", ShortenedUrlController
+
+    get "/new", ShortenedUrlController, :new
+    post "/create", ShortenedUrlController, :create
+    get "/created/:key", ShortenedUrlController, :created
+    get "/:key", ShortenedUrlController, :show
   end
 
   # Other scopes may use custom stacks.

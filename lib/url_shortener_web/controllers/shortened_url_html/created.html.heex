@@ -1,0 +1,11 @@
+<.header>
+  Created shortened url for <%= @shortened_url.url %>
+  <:subtitle></:subtitle>
+  <:actions>
+    <.link href={@shortened_url.url}>
+      <.button><%= UrlShortenerWeb.Endpoint.url() <> "/" <> @shortened_url.key %></.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.back navigate={~p"/new"}>Back to new url</.back>

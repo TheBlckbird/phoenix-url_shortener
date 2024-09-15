@@ -3,7 +3,7 @@ defmodule UrlShortener.Repo.Migrations.CreateShortenedUrls do
 
   def change do
     create table(:shortened_urls) do
-      add :key, :string
+      add :key, :string, primary_key: true
       add :url, :string
 
       timestamps(type: :utc_datetime)
